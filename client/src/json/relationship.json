@@ -1,0 +1,58 @@
+[
+    {
+        "name": "Padre",
+        "value": "Padre"
+    },
+    {
+        "name": "Madre",
+        "value": "Madre"
+    },
+    {
+        "name": "Padrasto",
+        "value": "Padrasto"
+    },
+    {
+        "name": "Madrasta",
+        "value": "Madrasta"
+    },
+    {
+        "name": "Tío",
+        "value": "Tío"
+    },
+    {
+        "name": "Tía",
+        "value": "Tía"
+    },
+    {
+        "name": "Hermano",
+        "value": "Hermano"
+    },
+    {
+        "name": "Hermana",
+        "value": "Hermana"
+    },
+    {
+        "name": "Abuelo",
+        "value": "Abuelo"
+    },
+    {
+        "name": "Abuela",
+        "value": "Abuela"
+    },
+    {
+        "name": "Vecino",
+        "value": "Vecino"
+    },
+    {
+        "name": "Transporte escolar",
+        "value": "Transporte escolar"
+    },
+    {
+        "name": "Tutor",
+        "value": "Tutor"
+    },
+    {
+        "name": "Otro (especifique)",
+        "value": ""
+    }
+]

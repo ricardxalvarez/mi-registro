@@ -1,0 +1,38 @@
+[
+    {
+        "name": "Sin escolaridad",
+        "value": "Sin escolaridad"
+    },
+    {
+        "name": "Primaria incompleta",
+        "value": "Primaria incompleta"
+    },
+    {
+        "name": "Secundaria completa",
+        "value": "Secundaria completa"
+    },
+    {
+        "name": "Superior incompleto",
+        "value": "Superior incompleto"
+    },
+    {
+        "name": "Superior completo",
+        "value": "Superior completo"
+    },
+    {
+        "name": "Postgrado incompleto",
+        "value": "Postgrado incompleto"
+    },
+    {
+        "name": "Postgrado completo",
+        "value": "Postgrado completo"
+    },
+    {
+        "name": "Doctorado incompleto",
+        "value": "Doctorado completo"
+    }, 
+    {
+        "name": "Otro (especifique)",
+        "value": ""
+    }
+]

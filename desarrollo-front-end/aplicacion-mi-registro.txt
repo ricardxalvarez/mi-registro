@@ -1,0 +1,30 @@
+La aplicación se compone de los siguientes procesos : 
+
+PROCESO # 1  CARGA DE DATOS :
+ 
+             Los usuarios de la aplicación serán : padres/tutores, estudiantes, docentes y personal administrativo, para obtener los datos de cada perfil es
+             necesario elaborar formularios específicos, la información en detalle que debe solicitar cada formulario está disponible en la carpeta "formularios",
+             los cuales están debidamente identificados.
+
+
+PROCESO # 2  INICIO DE SESIÓN : 
+           
+             Los usuarios inician sesión en la aplicación web, la cual se llama "MI REGISTRO", en dicha página se les solicita introducir su usuario y contraseña.
+             En caso de que hayan olvidado su usuario o contraseña, o ambos, entonces, será necesario disponer de una página de restablecimiento de credenciales.
+
+
+PROCESO # 3  MENU PRINCIPAL : 
+
+             Según el rol que posea cada usuario, se les mostrará un determinado menú principal de opciones a ejecutar, el listado de los menús principal de acuerdo al
+             rol con sus respectivas opciones se encuentra en la carpeta "menu-rol".
+             
+
+PROCESO # 4  OPCIONES : 
+   
+             Una vez los usuarios se encuentran frente a su menú principal correspondiente y hayan elegido una opción, entonces, se le desplegará la página en 
+             cuestión, la cual consiste básicamente en formularios que solicitarán información, la cual, en algunos caso serán digitadas por el usuario, y en otros,
+             deberán seleccionar una o varias dentro de una lista de opciones. Dichos formularios en detalle se encuentran en la carpeta "formularios-acciones"
+ 
+             
+
+

@@ -1,0 +1,63 @@
+************************* CAPTURA DE DATOS DE DOCENTES Y PERSONAL ADMINISTRATIVO ****************************************
+
+ CONSIDERACIONES : 
+  
+   0.1) A menos que se indique lo contrario, en cada campo los usuarios deben escribir la información solicitada.
+   0.2) Todos los campos son de caracter obligatorio.
+
+-------------- CAMPOS DEL FORMULARIO DE CAPTURA DE DATOS PARA LOS DOCENTES Y PERSONAL ADMINISTRATIVO --------------
+
+ A) DATOS PERSONALES 
+
+   01) Nombres 
+   02) Primer apellido
+   03) Segundo apellido
+   04) Cédula / pasaporte (en este campo, el usuario debe elegir uno o el otro, luego introducir los dígitos)
+   03) Foto (en esta opción el usuario elige sube desde su computadora la foto que será de dimensión 2x2)
+
+   04) Sexo (debe presentarse la siguiente lista, para elegir solo una)
+       4.1) Masculino
+       4.2) Femenino
+
+   05) Email
+   06) Edad (debe presentarse una lista desplegable para elegir la edad, desde 18 hasta 80 años)
+   07) Nacionalidad (debe presentarse una lista con distintas nacionalidades, siendo la dominicana la primera en aparecer, luego la haitiana, y luego, las
+       demás)
+
+   08) Estado civil (solo hay cuatro opciones para elegir una, las cuales son )  
+       8.1) Casado (legalmente)
+       8.2) Soltero
+       8.3) Divorciado
+       8.4) Unión libre (amancebao)
+
+   09) Dirección
+   
+ B) FORMACIÓN ACADÉMICA
+
+   10) Años en servicio en el Sistema Educativo (debe presentarse una lista  desde el 1 hasta el 30, para que solo tenga que elegir)
+   11) Área de Especialización  
+   12) Título de grado alcanzado (debe presentarse una lista con las carreras universitarias, dicha lista está en el archivo "carreras-universitarias")
+   13) Estudios que cursa en la actualidad (debe presentarse una lista con las siguientes opciones :
+       13.1) Curso
+       13.2) Diplomado
+       13.3) Especialidad
+       13.4) Maestría
+       13.5) Doctorado
+       13.6) Otro (especifique)
+
+C) INFORMACIÓN LABORAL
+
+  14) Cargo (aquí debe elegir una de las siguientes opciones)
+      14.1) Monitor 
+      14.2) Ayudante  
+      14.3) Docente contratado 
+      14.4) Docente nombrado 
+      14.5) Dinamizador tic 
+      14.6) Coordinador de área
+      14.7) Coordinador de nivel 
+      14.8) Secretaria docente      
+      14.9) Director de centro 
+     14.10) Técnico distrital 
+     14.11) Técnico regional
+     14.12) Técnico nacional
+     14.13) Otro (especifique)

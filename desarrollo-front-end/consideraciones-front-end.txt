@@ -1,0 +1,73 @@
+CONSIDERACIONES GENERALES :
+   
+  A) SOBRE EL DISEÑO : 
+   
+     A.0.1) El color principal a utilizar es el azul.
+     A.0.2) Las imágenes a utilizar deben ser de caracter educativo.
+     A.0.3) La colocación de las partes (cabecera, pie de página, botones,etc) debe seguir una disposición lógica. 
+     A.0.4) En los campos donde se solicite información, debe aparecer el mandato en segundo plano (placeholder).
+     A.0.5) Al colocar el cursor encima de una opción en particular, esta debe resaltar por encima de las demás.
+     A.0.6) El tamaño de las letras debe ser entre 16 y 20, (según sea el caso).
+     A.0.7) Las letras deben ser legibles,funcionalidad antes que la estética.
+
+
+  B) SOBRE LA ORTOGRAFÍA : 
+     
+     B.0.1) Todas las palabras que lleven tílde, debe tenerla, sin importar que estén escritas en mayúsculas o minúsculas.
+     B.0.2) El nombre del centro educativo debe ser escrito por completo en letras mayúsculas, por ejemplo : CENTRO EDUCATIVO CONOCIMIENTO.
+     B.0.3) En el lema del centro educativo, solo la primera letra debe estar escrita en mayúscula, por ejemplo : Aprendiendo desde el amor.
+     B.0.4) Cuando se refiera a la sección del grado, debe escribirse de la siguiente manera : "Sección B" 
+     B.0.5) Deben utilizarse los signos  gramaticales (interrogación, admiración, etc) según sea el caso. 
+
+
+  C) SOBRE EL DESARROLLO       
+
+     C.0.1) En la cabecera de la página de inicio de sesión debe colocarse el nombre de la aplicación : "MI REGISTRO"
+     C.0.2) En cada página correspondiente a las opciones del menú principal, deben colocar dos botones, a saber :
+
+            C.0.2.1) Guardar y continuar, al pulsar sobre este botón debe guardar y continuar en la misma página.
+            C.0.2.2) Guardar y salir, al pulsar sobre este botón debe guardar y volver al menú principal.
+
+     C.0.3) En cada página correspondiente a las opciones del menú principal, deben colocar en la cabecera lo siguiente :
+
+             C.0.3.1) Nombre del centro educativo "Mi conocimiento"
+             C.0.3.2) Debajo del nombre educativo, el lema del centro educativo : "Aprendiendo desde el amor" 
+             C.0.3.3) Nombre de la acción que se está ejecutado, por ejemplo : "Asistencia" 
+             C.0.3.4) Nombre del Grado y sección, por ejemplo : "Kinder - Sección A"
+
+
+     C.0.4) El despliegue se ejecutará en smartphone, tablet y computadora (principalmente en computadora)
+     C.0.5) La aplicación se conectará a una base de datos POSTGRESQL para obtener los datos de estudiantes, grados, secciones, etc
+     C.0.6) En los campos donde solicite una fecha, debe aparecer un calendario para que el usuario seleccione la misma.
+     C.0.7) El campo donde se coloca la contraseña en la página de inicio de sesión debe ser no visible al usuario.
+
+
+---------------------------------------------- SECUENCIA DE LAS PÁGINAS ----------------------------------------
+
+
+
+PÁGINA # 1 : INICIO DE SESIÓN 
+             
+
+PÁGINA # 2 : SELECCIÓN DE GRADO  
+
+
+PÁGINA # 3 : MENÚ PRINCIPAL : 
+
+             El menú principal debe contener las siguientes opciones : 
+
+             3.1) Asistencia
+             3.2) Registro de apoyo a la diversidad
+             3.3) Diario anecdótico
+             3.4) Evaluación de aprendizajes
+             3.5) Visitas / experiencias
+             3.6) Grupo pedagógico / comunidad de aprendizaje
+             3.7) Reflexiono sobre mi práctica pedagógica
+             3.8) Registro de dificultades
+             3.9) Registro de cualidades a destacar
+            3.10) Práctica pedagógica
+
+
+
+
+          

@@ -1,0 +1,88 @@
+Formulario de captura de datos de los padres, madres, tutores, responsables :
+
+ 1) Nombre completo 
+ 2) Primer apellido
+ 3) Segundo apellido
+ 4) Cédula / Pasaporte (debe elegir uno u otro, y luego introducir los dígitos) 
+ 5) Parentesco (debe elegir una de las siguientes opciones) 
+    5.1) Padre
+    5.2) Madre
+    5.3) Padrasto
+    5.4) Madrasta
+    5.5) Tío
+    5.6) Tía
+    5.7) Hermano
+    5.7) Hermana
+    5.8) Abuelo
+    5.9) Abuela
+   5.10) Vecino
+   5.11) Transporte escolar
+   5.12) Tutor 
+   5.13) Otro (especifique)
+ 6) Sexo (debe elegir una de dos opciones)
+     6.1) Masculino
+     6.2) Femenino 
+ 7) Edad (de una lista desplegable, debe elegir una) 
+ 8) Dirección
+ 9) Email
+ 10) Teléfono residencial
+ 11) Teléfono movil
+ 12) Escolaridad
+     12.1) Sin escolaridad
+     12.2) Primaria incompleta
+     12.3) Primaria completa
+     12.4) Secundaria incompleta
+     12.5) Secundaria completa
+     12.6) Superior incompleto
+     12.7) Superior completo
+     12.8) Postgrado incompleto
+     12.9) Postgrado completo
+    12.10) Doctorado incompleto
+    12.11) Doctorado completo
+    12.12) Otro (especifique)
+
+ 13) Oficio. 
+     13.1) Abogado/a
+     13.2) Albañil
+     13.3) Arquitecto/a
+     13.4) Banquero/a (apuestas)
+     13.5) Carpintero/a
+     13.6) Carnicero/a
+     13.7) Ceramista
+     13.8) Chofer transporte privado
+     13.9) Cobrador/a
+    13.10) Colmadero/a
+    13.11) Comerciante
+    13.12) Concho
+    13.13) Delivery
+    13.14) Electricista
+    13.15) Empresario/a
+    13.16) Escultor/a
+    13.17) Guardián
+    13.18) Herrero
+    13.19) Hojalatero/a
+    13.20) Ingeniero/a
+    13.21) Jardinero/a
+    13.22) Joyero/a
+    13.23) Licenciado/a
+    13.24) Mecánico/a automotriz
+    13.25) Médico/a
+    13.26) Motoconcho
+    13.27) Pintor/a
+    13.28) Plomero
+    13.29) Prestamista
+    13.30) Sastre/Modista
+    13.31) Taxista
+    13.32) Tapicero/a
+    13.33) Verdulero/a
+    13.35) Vidriero/a
+    13.36) Zapatero/a
+    13.37) Vendedor
+    13.38) Buhonero
+    13.37) Otro (especifique) 
+    
+ 14) Lugar de trabajo
+
+ 15) Teléfono del trabajo
+
+

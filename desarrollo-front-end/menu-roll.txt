@@ -1,0 +1,35 @@
+Las siguientes opciones son las que deben aparecer según el rol que posea : 
+
+ 1) ESTUDIANTES  :
+    
+    1.1) VER CALIFICACIONES
+    1.2) DENUNCIA
+    1.3) MIS CLASES
+    1.4) ASISTENTE
+    1.5) BIBLIOTECA
+    1.6) LECTURAS
+
+
+ 2) DOCENTES
+    
+    2.1) CALIFICACIONES
+    2.2) ASISTENCIA
+    2.3) REPORTES / INFORMES
+    2.4) MI FORMACIÓN
+
+
+ 3)  PERSONAL ADMINISTRATIVO
+   
+    3.1) ACTAS
+    3.2) RECORD DE CALIFICACIONES
+    3.3) INSCRIPCIÓN
+
+
+ 4) PADRES 
+
+   4.1) VER CALIFICACIONES
+   4.2) INFORMES / REPORTES
+   4.3) ASISTENCIA
+
+
+ 

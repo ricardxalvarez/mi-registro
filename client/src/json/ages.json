@@ -1,0 +1,14 @@
+[
+    {
+        "name": "45 días de nacimiento",
+        "value": 0.123203
+    },
+    {
+        "name": "De 45 días a 6 meses",
+        "value": 0.499658
+    },
+    {
+        "name": "De 6 meses a 1 año ",
+        "value": 1
+    }
+]

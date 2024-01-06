@@ -1,0 +1,150 @@
+
+ CONSIDERACIONES
+  0.1) Existen tres niveles, inicial, primaria y secundaria.
+  0.2) Existen datos comunes de estudiantes a todos los niveles.
+  0.3) Existen datos particulares para cada nivel.
+
+-------------------------------------- CAMPOS PARA LA CAPTURA DE DATOS DE LOS ESTUDIANTE ----------------------------------- 
+Los estudiantes se ubican en uno de los siguientes niveles : inicial, primaria y secundaria. 
+
+
+ A) DATOS PERSONALES : 
+
+    01) Nombres 
+    02) Primer apellido
+    03) Segundo apellido
+    04) Cédula / pasaporte (debe elegir una opción, y luego digitar los números)
+    05) RNE (este campo es alfanumérico)
+    05) Foto
+
+    06) Sexo 
+       6.1) Masculino 
+       6.2) Femenino
+
+    07) Email
+
+    08) Edad (lista de edades, 
+
+       8.1) 45 días de nacimiento
+       8.2) De 45 días a 6 meses
+       8.3) De 6 meses a 1 año 
+       8.4) A partir de aquí desde el 2 hasta el 80
+
+    09) Nacionalidad :
+
+       9.1) Dominicana
+       9.2) Haitiana
+       9.3) Las demás nacionalidades 
+
+    10) Estado civil : 
+       10.1) Casado 
+       10.2) Soltero
+       10.3) Divorciado
+       10.4) Unión libre
+
+    11) Dirección
+    12) RNE
+    13) Fecha de nacimiento (debe presentarse calendario para elegir la fecha)
+    14) Folio
+    15) Libro 
+    16) Acta
+    17) Lugar de nacimiento
+    18) El niño viven con : 
+        18.1) Mamá
+        18.2) Papá
+        18.3) Otra persona (si elige esta opción, entonces debe salir las siguientes opciones)
+               18.3.1) Nombre de la persona con quien vive 
+               18.3.2) Apellido de la persona con quien vive
+               18.3.3) Parentesco  de la persona con quien vive (herman@,abuelos,tíos,vecinos)
+               18.3.4) Dirección
+               18.3.5) Teléfono
+               18.3.6) Correo electrónico 
+               18.3.7) Ocupación
+               18.3.9) Lugar donde trabaja
+
+  B) Datos de salud : 
+
+    19) Nombre de la persona para llamar en caso de emergencia
+    20) Teléfono de la persona para llamar en caso de emergencia
+    21) Cédula de la persona para llamar en caso de emergencia
+    22) Alérgico
+    23) Medicamentos que usa
+    24) Necesidades específicas de apoyo educativo (debe elegir una o varias discapacidades de la lista "discapacidades")  
+    
+
+------------------------- Los siguientes datos solo son exigidos si el estudiante es del nivel inicial --------------
+
+25) Cantidad de hermanos que tiene (lista de números, del 1 al 20)
+    Si elige como cantidad de hermanos 3, entonces deben aparecer tres campos respectivamente para poner las edades de los mismos.
+26) Edades de los hermanos
+     26.1) Edad del primer hermano
+     26.2) Edad del segundo hermano
+     26.3) Edad del tercer hermano
+     26.4) Edad del cuarto hermano
+     26.5) Edad del quinto hermano
+27) Lugar que ocupa entre los hermanos o hermanas (listado ordinal, por ejemplo, primero,segundo,tercero,etc)
+28) Nombre del médico o pediatra
+29) Teléfono del médico o pediatra
+30) Execuatur del pediatra
+31) Tuberculosis (BCG), (Al nacer) 
+    31.1) Única
+32) Hepatitis B (Al nacer) otavirus (IPV, Neumococo, Pentavalente, 2 4 y 6 meses)
+    32.1) 1era
+    32.2) 2da
+    32.3) 3era
+33) Influenza
+    33.1) 1era
+    33.2) 2da
+    33.3) Refuerzo anual
+34) SPR (12 meses)
+    34.1) 1era
+35) Neumococo (12 meses) 
+    35.1) Refuerzo
+36) SPR (18 meses) 
+    36.1) 2a
+37) BOPV,DPT (18 meses) TDAN
+    37.1) 1era
+    37.2) REFUERZO
+38) BOPV, DPT (4 AÑOS) DT INFLUENZA
+    38.1) 2da
+    38.2) REFUERZO
+38) COVID 19 (5 AÑOS)
+    38.1) 1era
+    38.2) 2da dósis según esquema
+39) VPH (SOLO PARA NIÑOS) (9- 14 AÑOS)
+    39.1) 1era
+    39.2) 2da (6 meses después)
+40) DT (PARA NIÑOS Y NIÑAS) (9- 14 AÑOS)
+    40.1) 3era
+    40.2) Refuerzo a los diez años
+41) EMBARAZADA
+    41.1) TDAN
+      41.1.1)  1 (UNA)
+    41.2) DT
+      41.2.1) Dósis o más según su esquema
+    41.3) Influenza
+     41.3.1) 1 (UNA DOSIS)
+
+------------------------- Los siguientes datos solo son exigidos si el estudiante es del nivel primario y secundario -------------
+
+42) Condición del estudiante
+    42.1) Nuevo inscrito 
+    42.1.1) Día 
+    42.1.2) Mes
+    42.1.3) Año
+    42.2) Retirado 
+    42.2.1) Día 
+    42.2.2) Mes
+    42.2.3) Año
+    42.2.4) Promovido
+    42.3) Repitente
+    42.4) Reingreso
+    42.5) Aplazado
+43) Evaluaciones de las asignaturas pendientes 3er. grado (secundaria)
+    43.1) Nombre de la asignatura reprobada #1
+    43.2) Calificación de la asignatura reprobada #1
+    43.3) Calificación oportunidad especial
+    43.3) Nombre de la asignatura reprobada #2
+    43.4) Calificación de la asignatura reprobada #2
+    43.5) Calificación oportunidad especial
+

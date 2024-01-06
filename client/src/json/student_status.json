@@ -1,0 +1,22 @@
+[
+    {
+        "name": "Nuevo Inscrito",
+        "value": "nuevo inscrito"
+    },
+    {
+        "name": "Retirado",
+        "value": "retirado"
+    },
+    {
+        "name": "Repitiente",
+        "value": "repitiente"
+    },
+    {
+        "name": "Reingreso",
+        "value": "reingreso"
+    },
+    {
+        "name": "Aplazado",
+        "value": "aplazado"
+    }
+]

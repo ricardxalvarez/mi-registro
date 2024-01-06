@@ -1,0 +1,32 @@
+ Vómitos
+ Diarrea
+ Fiebre
+ Vértigo
+ Mareo
+ Quemadura 
+ Traumatismo
+ Naúseas
+ Alergia 
+ Proceso gripal
+ Dificultad para respirar
+ Calambres
+ Malestar general
+ Migraña
+ Cuadro epiléptico
+ Dolor de cabeza
+ Dolor de estómago
+ Dolor abdominal
+ Dolor de espalda 
+ Asma
+ Cita médica
+ Licencia médica
+ Cita consular / embajada
+ Tratamiento bucal
+ Viaje al extranjero
+ Viaje al interior 
+ Problemas familiares
+ Deceso del padre
+ Deceso de la madre
+ Deceso de hermanos (s) 
+ Deceso de familiar
+ Otro (especifique)
