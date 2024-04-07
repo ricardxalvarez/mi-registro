@@ -18,6 +18,12 @@ export interface Teacher {
     expertise: string
     degree: string
     current_studies: string
-    rank: string
     created_at: Date
+}
+
+export interface Training {
+    years_of_service: number
+    expertise: string
+    degree: string
+    current_studies: string
 }

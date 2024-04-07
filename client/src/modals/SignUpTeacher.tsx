@@ -6,7 +6,9 @@ import { ChangeEvent, FormEvent, useState } from "react";
 import * as TeacherTypes from '../types/teacher'
 import Select from "../components/common/Select";
 import genders from '../json/genders.json'
-// import ages from '../json/ages.json'
+import careers from '../json/careers.json'
+import current_studies from '../json/current_studies.json'
+import ranks from '../json/ranks.json'
 import createAgeArray from "../utils/optionsArray";
 import civil_status from '../json/civil_status.json'
 import CountryInput from "../components/common/Country";
@@ -30,6 +32,7 @@ export default function SignUpTeacher() {
         setData(prevData => ({...prevData, [name]: value}))
     }
     const ages_list = createAgeArray(18, 80, 'años')
+    const years_of_service_list = createAgeArray(1, 30, 'años')
 
     async function register(e: FormEvent<HTMLFormElement>) {
         e.preventDefault()
@@ -40,6 +43,7 @@ export default function SignUpTeacher() {
             console.log(error)
         }
     }
+
     return (
         <ModalContainer>
             <Modal onSubmit={register}>
@@ -123,7 +127,6 @@ export default function SignUpTeacher() {
                     placeholder="Min. 8 caracteres"
                     value={data.password || ''}
                     onChange={onChange}
-                    // maxLength={125}
                     />
                     <CountryInput
                     value={data.nationality}
@@ -131,6 +134,72 @@ export default function SignUpTeacher() {
                     onChange={onChangeSelect}
                     name="nationality"
                     />
+                </div>
+                <hr className="separator" />
+                <h2>Formación Académica</h2>
+                <div className="input-container">
+                    <Select
+                    options={years_of_service_list}
+                    label="Años de servicio"
+                    name="years_of_service"
+                    value={data.years_of_service}
+                    onChange={onChangeSelect}
+                    defaultNull
+                    />
+                    <GeneralInput
+                    label="Área de Especialización"
+                    name="expertise"
+                    value={data.expertise || ''}
+                    onChange={onChange}
+                    maxLength={120}
+                    />
+                </div>
+                <div className="input-container"
+                style={{marginBottom: '60px'}}
+                >
+                    <div style={{display: 'flex', alignItems: 'end', gap: '10px'}}>
+                        <Select
+                        options={careers}
+                        name="degree"
+                        onChange={onChangeSelect}
+                        style={{height: '50px'}}
+                        defaultNull
+                        label="Título de grado alcanzado"
+                        />
+                        {
+                            data.degree !== undefined &&
+                            (!careers.some(item => item.value === data.degree) || data.degree === '') &&
+                            <GeneralInput
+                            value={data.degree}
+                            name="degree"
+                            maxLength={175}
+                            onChange={onChange}
+                            required
+                            />
+                        }
+                    </div>
+                    <div style={{display: 'flex', alignItems: 'end', gap: '10px'}}>
+                        <Select
+                        options={current_studies}
+                        name="current_studies"
+                        onChange={onChangeSelect}
+                        style={{height: '50px'}}
+                        defaultNull
+                        
+                        label="Estudios que cursa en la actualidad"
+                        />
+                        {
+                            data.current_studies !== undefined &&
+                            (!current_studies.some(item => item.value === data.current_studies) || data.current_studies === '') &&
+                            <GeneralInput
+                            value={data.current_studies}
+                            name="current_studies"
+                            maxLength={125}
+                            onChange={onChange}
+                            required
+                            />
+                        }
+                    </div>
                 </div>
                 <div className="actions">
                     <button

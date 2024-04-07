@@ -4,13 +4,10 @@ from sqlalchemy import Column, Date, func
 from sqlalchemy.orm import as_declarative, declarative_base
 from sqlalchemy.dialects.postgresql import UUID
 
-
-Base: DeclarativeMeta = declarative_base()
-
 @as_declarative()
 class Base:
-    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4, unique=True, index=True)
-    created_at = Column(Date, default=func.now())
+    id = Column(UUID(as_uuid=True), primary_key=True, server_default=func.uuid_generate_v4(), unique=True, index=True)
+    created_at = Column(Date, server_default=func.now())  # Added parentheses
     @declared_attr
     def __tablename__(cls) -> str:
         return cls.__name__.lower()

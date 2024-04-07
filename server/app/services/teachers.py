@@ -1,16 +1,18 @@
 from app.bases import teachers as TeacherBases
+from sqlalchemy import update
 from sqlalchemy.orm import Session
 from sqlalchemy.exc import IntegrityError
-from app.db.models import Teachers
+from app.db.models import *
 from fastapi import HTTPException
 import bcrypt
 
-async def register(data: TeacherBases.Register, db: Session):
+async def register(data: TeacherBases.Register, center_id: str, db: Session):
     try:
         salt = bcrypt.gensalt()
         hash = bcrypt.hashpw(data.password.encode('utf-8'), bytes(salt))
         user = Teachers(
             name=data.name,
+            center_id=center_id,
             username=data.username,
             lastName=data.lastName,
             password=hash,
@@ -27,8 +29,6 @@ async def register(data: TeacherBases.Register, db: Session):
             expertise=data.expertise,
             degree=data.degree,
             current_studies=data.current_studies,
-            # labor
-            rank=data.rank
         )
         db.add(user)
         db.commit()
@@ -38,3 +38,35 @@ async def register(data: TeacherBases.Register, db: Session):
     except IntegrityError as error:
         print(error)
         raise HTTPException(status_code=422)
+    finally:
+        db.close()
+    
+async def me(id: str, db: Session):
+    try:
+        teacher = db.query(Teachers).where(Teachers.id == id).first()
+        return teacher
+    except IntegrityError as error:
+        print(error)
+        raise HTTPException(status_code=422)
+    finally:
+        db.close()
+    
+async def updateTeacher(id: str, data: TeacherBases.Training, db: Session):
+    try:
+        db.execute(
+            update(Teachers)
+            .where(Teachers.id == id)
+            .values(
+                years_of_service=data.years_of_service,
+                expertise=data.expertise,
+                degree=data.degree,
+                current_studies=data.current_studies,
+            )
+        )
+        db.commit()
+        return 'Info updated'
+    except IntegrityError as error:
+        print(error)
+        raise HTTPException(status_code=422)
+    finally:
+        db.close()

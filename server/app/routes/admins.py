@@ -10,7 +10,8 @@ router = APIRouter(
 )
 
 @router.post('/register', tags=['Login'])
-@auth(['administrador'])
+# @auth(['administrador'])
 async def register(request: Request, data: AdminBase.Register, db: Session = Depends(get_database)):
+    # print(request.state.user)
     result = await AdminService.register(data=data, db=db)
     return result

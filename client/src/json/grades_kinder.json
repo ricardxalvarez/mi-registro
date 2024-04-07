@@ -1,0 +1,18 @@
+[
+    {
+        "name": "Iniciando (I)",
+        "value": "I"
+    },
+    {
+        "name": "En proceso (EP)",
+        "value": "EP"
+    },
+    {
+        "name": "Logrado (L)",
+        "value": "L"
+    },
+    {
+        "name": "No evaluado (N/E)",
+        "value": "N/E"
+    }
+]

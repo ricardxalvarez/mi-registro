@@ -1,12 +1,14 @@
 import styled from "styled-components";
-import HomeTeacher from "./teachers/Home";
 import Sidebar from "../components/Sidebar";
 import Navbar from "../components/Navbar";
 import * as UserTypes from '../types/user'
 import { useGlobal } from "../context/global";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+// pages
+import HomeTeacher from "./teachers";
 import HomeAdmin from "./admins";
+// modals
 import SignUpTeacher from "../modals/SignUpTeacher";
 import SignUpStudent from "../modals/SignUpStudent";
 import SignUpParent from "../modals/SignUpParent";
@@ -22,6 +24,7 @@ export default function Home() {
     useEffect(() => {
         if (!user) navigate('/access')
     }, [user, navigate])
+    if (!user) return <></>
     return (
         <Main>
             <Grid>
@@ -35,7 +38,6 @@ export default function Home() {
                     user.source === 'administrador' &&
                     <HomeAdmin/>
                 }
-                
             </Grid>
             {
                 signupTeacherModalOpen &&
@@ -64,7 +66,7 @@ position: relative;
 const Grid = styled.div`
 width: 85%;
 height: 85%;
-max-width: 1000px;
+max-width: 1200px;
 max-height: 900px;
 display: grid;
 position: absolute;

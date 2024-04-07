@@ -4,6 +4,7 @@ from datetime import datetime
 
 class Admins(BaseModel):
     id: str
+    center_id: str
     name: str
     username: str 
     lastName: str
@@ -21,18 +22,19 @@ class Admins(BaseModel):
     expertise: str
     degree: str
     current_studies: str
-    # labor
-    rank: str = None
     created_at: datetime
 
 class Register(BaseModel):
     name: str
+    center_id: str
+    role: str
     username: str = Field(min_length=4, pattern=r"^[a-zA-Z0-9_.-]+$")
     lastName: str
-    password: constr(min_length=8, max_length=255) = Field(
-        ...,
-        description="Password must be 8-255 characters long, include upper and lower case letters, numbers, and certain special characters."
-    )
+    # password: constr(min_length=8, max_length=255) = Field(
+    #     ...,
+    #     description="Password must be 8-255 characters long, include upper and lower case letters, numbers, and certain special characters."
+    # )
+    password: str
     identification: str
     pic: str = None
     gender: str
@@ -46,10 +48,8 @@ class Register(BaseModel):
     expertise: str = None
     degree: str = None
     current_studies: str = None
-    # labor
-    rank: str = None
-    @validator('password')
-    def password_complexity(cls, value: str):
-        if not re.match(r"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d`~!@#$%^&*()-_=+\[\]{}|;:'\",.<>/?]+$", value):
-            raise ValueError("Password must include upper and lower case letters, numbers, and certain special characters.")
-        return value
+    # @validator('password')
+    # def password_complexity(cls, value: str):
+    #     if not re.match(r"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d`~!@#$%^&*()-_=+\[\]{}|;:'\",.<>/?]+$", value):
+    #         raise ValueError("Password must include upper and lower case letters, numbers, and certain special characters.")
+    #     return value

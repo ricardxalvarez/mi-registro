@@ -8,6 +8,7 @@ import UserService from "../services/user.service";
 import * as UserTypes from '../types/user'
 import { useGlobal } from "../context/global";
 import AdminService from "../services/admin.service";
+import TeacherService from "../services/teacher.service";
 
 interface LoginInterface {
     username: string,
@@ -43,7 +44,9 @@ export default function Access() {
                 case 'administrador':
                     AdminService.setToken(response.token)
                     break;
-            
+                case 'profesor':
+                    TeacherService.setToken(response.token)
+                    break;
                 default:
                     break;
             }

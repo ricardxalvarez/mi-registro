@@ -10,6 +10,7 @@ class AdminServiceClass {
     private teacher: string = '/teachers'
     private student: string = '/students'
     private parent: string = '/parents'
+    private grade: string = '/grade'
     constructor(token?: string) {
         this.token = token;
         this.config = { headers: { Authorization: `Bearer ${this.token}` } };
@@ -24,12 +25,20 @@ class AdminServiceClass {
         return http.post(this.teacher + '/register', data, this.config)
     }
 
-    registerStudent(data: StudentTypes.Student) {
-        return http.post(this.student + '/register', data, this.config)
+    registerStudent(data: FormData) {
+        return http.post(this.student + '/register', data, {...this.config, headers: {...this.config.headers, 'Content-Type': 'multipart/form-data' }})
     }
 
     registerParent(data: ParentTypes.Parent) {
         return http.post(this.parent + '/register', data, this.config)
+    }
+
+    getGrades() {
+        return http.get(this.grade + '/list', this.config)
+    }
+
+    getSectionsByGrade(grade_id: string) {
+        return http.get(this.grade + `/section/${grade_id}`, this.config)
     }
 }
 

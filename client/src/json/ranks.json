@@ -1,0 +1,50 @@
+[
+    {
+        "name": "Monitor",
+        "value": "Monitor"
+    },
+    {
+        "name": "Ayudante",
+        "value": "Ayudante"
+    },
+    {
+        "name": "Docente contratado",
+        "value": "Docente contratado"
+    },
+    {
+        "name": "Docente nombrado",
+        "value": "Docente nombrado"
+    },
+    {
+        "name": "Dinamizador tic",
+        "value": "Dinamizador tic"
+    },
+    {
+        "name": "Coordinador de área",
+        "value": "Coordinador de área"
+    },
+    {
+        "name": "Coordinador de nivel",
+        "value": "Coordinador de nivel"
+    },
+    {
+        "name": "Secretaria docente",
+        "value": "Secretaria docente"
+    },
+    {
+        "name": "Director de centro",
+        "value": "Director de centro"
+    },
+    {
+        "name": "Técnico distrital",
+        "value": "Técnico distrital"
+    },
+    {
+        "name": "Técnico regional",
+        "value": "Técnico nacional"
+    },
+    {
+        "name": "Otro (especifique)",
+        "value": ""
+    }
+]

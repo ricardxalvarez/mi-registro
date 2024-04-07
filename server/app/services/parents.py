@@ -53,3 +53,5 @@ async def register(data: ParentBases.Register, db: Session):
     except IntegrityError as error:
         print(error)
         raise HTTPException(status_code=422)
+    finally:
+        db.close()

@@ -16,5 +16,6 @@ class Settings:
     POSTGRES_DB : str = os.getenv("POSTGRES_DB","tdd")
     DATABASE_URL = f"postgresql://{POSTGRES_USER}:{POSTGRES_PASSWORD}@{POSTGRES_SERVER}:{POSTGRES_PORT}/{POSTGRES_DB}"
     JWT_SECRET: str = os.getenv("JWT_SECRET")
+    DIST_FOLDER: str = os.getenv('DIST_FOLDER')
 
 settings = Settings()

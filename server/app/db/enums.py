@@ -1,6 +1,9 @@
 from sqlalchemy import Enum
 # from sqlalchemy.dialects.postgresql import ENUM
 
+admin_role = ('coordinador_de_area' , 'coordinador_de_nivel', 'director_de_centro', 'secretario_dc', 'tecnico_distrital')
+AdminRole = Enum(*admin_role, name='admin_role')
+
 genders = ('masculino', 'femenino')
 Gender = Enum(*genders, name='gender_enum')
 
@@ -16,38 +19,8 @@ LivesWith = Enum(*lives_with, name='lives_with_enum')
 stundent_levels = ('inicial', 'primario', 'secundario')
 StudentLevels = Enum(*stundent_levels, name='students_levels_enum')
 
-hepatitis = ('1era', '2da', '3era')
-Hepatitis = Enum(*hepatitis, name='hepatitis_enums')
-
-influenza = ('1era', '2da', 'refuerzo anual')
-Influenza = Enum(*influenza, name='influenza_enum')
-
-spr = ('1era')
-SPR = Enum(spr, name='spr_enum')
-
-dpt = ('2da', 'refuerzo')
-DPT = Enum(*dpt, name='dpt_enum')
-
-neumoco = ('refuerzo')
-Neumoco = Enum(neumoco, name='neumoco_enum')
-
-bopv = ('1era', 'refuerzo')
-Bopv = Enum(*bopv, name='bopv_enum')
-
-covid = ('1era', '2da')
-Covid = Enum(*covid, name='covid_enum')
-
-vph = ('1era', '2da')
-VPH = Enum(*vph, name='vph_enum')
-
-dt = ('3era', 'refuerzo')
-DT = Enum(*dt, name='dt_enum')
-
-pregnant_tdan = ('1era')
-PregnantTDAN = Enum(pregnant_tdan, name='pregnant_tdan_enum')
-
-pregnant_influenza = ('1era')
-PregnantInfluenza = Enum(pregnant_influenza, name='pregnant_influenza_enum')
+kinder_grades = ('I', 'EP', 'L', 'N/E')
+KinderGrades = Enum(*kinder_grades, name='kinder_grades_enum')
 
 student_status = ('nuevo inscrito', 'retirado', 'repitiente', 'reingreso', 'aplazado')
 StudentStatus = Enum(*student_status, name='student_status_enum')

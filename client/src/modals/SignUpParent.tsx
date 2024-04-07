@@ -182,13 +182,14 @@ export default function SignUpParent() {
                         name="relationship"
                         onChange={onChangeSelect}
                         // value={data.relationship}
+                        label="Parentesco"
                         style={{height: '50px'}}
                         defaultNull
                         />
                         {
+                            data.relationship !== undefined &&
                             (!relationship.some(item => item.value === data.relationship) || data.relationship === '') &&
                             <GeneralInput
-                            label="Parentesco"
                             value={data.relationship}
                             name="relationship"
                             onChange={onChange}
@@ -213,12 +214,13 @@ export default function SignUpParent() {
                             name="scholarship"
                             onChange={onChangeSelect}
                             style={{height: '50px'}}
+                            label="Escolaridad"
                             defaultNull
                             />
                             {
+                                data.scholarship !== undefined &&
                                 (!scholarship.some(item => item.value === data.scholarship) || data.scholarship === '') &&
                                 <GeneralInput
-                                label="Escolaridad"
                                 value={data.scholarship}
                                 name="scholarship"
                                 onChange={onChange}
@@ -233,12 +235,13 @@ export default function SignUpParent() {
                             name="job"
                             onChange={onChangeSelect}
                             style={{height: '50px'}}
+                            label="Ocupación"
                             defaultNull
                             />
                             {
+                                data.job !== undefined &&
                                 (!jobs.some(item => item.value === data.job) || data.job === '') &&
                                 <GeneralInput
-                                label="Ocupación"
                                 value={data.job}
                                 name="job"
                                 maxLength={155}

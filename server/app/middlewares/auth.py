@@ -41,25 +41,25 @@ def auth(valid: list[AllowedRoles]):
                 admin_query = db.query(
                     literal('administrador').label('source'),
                     Admins.id, Admins.email, Admins.username, Admins.password,
-                    Admins.name, Admins.created_at
+                    Admins.center_id, Admins.name, Admins.created_at
                 ).filter(Admins.username == username).subquery()
 
                 teacher_query = db.query(
                     literal('profesor').label('source'),
                     Teachers.id, Teachers.email, Teachers.username, Teachers.password,
-                    Teachers.name, Teachers.created_at
+                    Teachers.center_id, Teachers.name, Teachers.created_at
                 ).filter(Teachers.username == username).subquery()
 
                 parent_query = db.query(
                     literal('padre').label('source'),
                     Parents.id, Parents.email, Parents.username, Parents.password,
-                    Parents.name, Parents.created_at
+                    Parents.center_id, Parents.name, Parents.created_at
                 ).filter(Parents.username == username).subquery()
 
                 student_query = db.query(
                     literal('estudiante').label('source'),
                     Students.id, Students.email, Students.username, Students.password,
-                    Students.name, Students.created_at
+                    Students.center_id, Students.name, Students.created_at
                 ).filter(Students.username == username).subquery()
 
                 # Combine the queries using union_all
@@ -77,10 +77,10 @@ def auth(valid: list[AllowedRoles]):
                     login_union.c.email,
                     login_union.c.username,
                     login_union.c.password,
+                    login_union.c.center_id,
                     login_union.c.name,
                     login_union.c.created_at
                 ).first()._asdict()
-                
                 if user['id']:
                     if user['source'] not in valid:
                         raise HTTPException(status_code=400, detail="Invalid authentication scheme")

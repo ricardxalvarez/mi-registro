@@ -1,0 +1,26 @@
+[
+    {
+        "name": "Curso",
+        "value": "Curso"
+    },
+    {
+        "name": "Diplomado",
+        "value": "Diplomado"
+    },
+    {
+        "name": "Especialidad",
+        "value": "Especialidad"
+    },
+    {
+        "name": "Maestría",
+        "value": "Maestría"
+    },
+    {
+        "name": "Doctorado",
+        "value": "Doctorado"
+    },
+    {
+        "name": "Otro (especifique)",
+        "value": ""
+    }
+]

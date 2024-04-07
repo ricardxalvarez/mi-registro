@@ -3,7 +3,7 @@ import styled, { keyframes } from "styled-components";
 export const ModalContainer = styled.div`
 height: 100vh;
 width: 100vw;
-position: absolute;
+position: fixed;
 top: 0;
 left: 0;
 z-index: 10;
@@ -36,8 +36,8 @@ position: absolute;
 padding: 20px 25px;
 animation: ${showUpModal} .3s ease forwards;
 max-height: 85%;
-overflow: hidden;
-overflow-y: unset;
+overflow: auto;
+/* overflow-y: unset; */
 h1 {
     font-size: 22px;
     margin-bottom: 20px;
@@ -51,6 +51,11 @@ h2 {
 h3 {
     font-size: 16px;
     margin-bottom: 20px;
+    font-weight: 500;
+}
+h4 {
+    font-size: 14px;
+    margin-bottom: 10px;
     font-weight: 500;
 }
 .close {

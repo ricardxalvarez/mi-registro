@@ -1,5 +1,5 @@
 from fastapi import FastAPI, Depends
-from app.routes import users, students, admins, parents, teachers
+from app.routes import users, students, admins, parents, teachers, grade, section, attendance, period, plan
 from app.config import settings
 from app.db.base_class import Base
 from sqlalchemy.exc import SQLAlchemyError
@@ -43,3 +43,8 @@ app.include_router(students.router)
 app.include_router(parents.router)
 app.include_router(teachers.router)
 app.include_router(admins.router)
+app.include_router(grade.router)
+app.include_router(section.router)
+app.include_router(attendance.router)
+app.include_router(period.router)
+app.include_router(plan.router)

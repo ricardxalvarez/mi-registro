@@ -1,7 +1,7 @@
-import styled from "styled-components";
-import { useState, useRef, useEffect } from "react";
+import styled, { css } from "styled-components";
+import { useState, useRef, useEffect, CSSProperties, RefObject } from "react";
 import { AiOutlineCalendar, AiOutlineArrowRight, AiOutlineArrowLeft } from 'react-icons/ai'
-
+import getMonthsList from "../../utils/getMonthsList";
 import {
     add,
     eachDayOfInterval,
@@ -25,13 +25,14 @@ import {
 export interface CalendarInterface {
     selectedDay?: null | Date | number;
     setSelectedDay: Function;
-    calendarStyle?: Object;
+    calendarStyle?: CSSProperties;
     selectPastDays?: boolean;
     selectPostDays?: boolean;
-    containerStyle?: Object;
-    datesStyle?: Object;
+    containerStyle?: CSSProperties;
+    datesStyle?: CSSProperties;
+    mainContainerStyle?: CSSProperties;
     label?: string,
-    selectYear?: boolean
+    modalRef?: RefObject<HTMLDivElement> | RefObject<HTMLFormElement>
   }
 
 export default function Calendar({
@@ -42,11 +43,13 @@ export default function Calendar({
     selectPostDays,
     containerStyle,
     datesStyle,
+    mainContainerStyle,
     label,
-    selectYear,
+    modalRef
 }: CalendarInterface) {
     const today = startOfToday();
     const [isSelectingYear, setIsSelectingYear] = useState(false)
+    const [isSelectingMonth, setIsSelectingMonth] = useState(false)
     const [currentMonth, setCurrentMonth] = useState(format(today, 'MMM-yyyy'))
     const [currentYear, setCurrentYear] = useState(new Date(`15-${currentMonth}`))
     const [selectedYear, setSelectedYear] = useState(getYear(currentMonth))
@@ -58,13 +61,14 @@ export default function Calendar({
             }
         }
     }, [selectedDay]);
-    const firstDayCurrentMonth = parse(currentMonth, 'MMM-yyyy', new Date());
+    const firstDayCurrentMonth = parse(currentMonth, 'MMM-yyyy', today);
     const [isCalendarOpen, setIsCalendarOpen] = useState(false);
     const days = eachDayOfInterval({
       start: firstDayCurrentMonth,
       end: endOfMonth(firstDayCurrentMonth),
     });
     const CalendarComponent = useRef<HTMLDivElement>(null);
+    const CalendarInputComponent = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         function handleClickOutside(event: any) {
@@ -128,14 +132,13 @@ export default function Calendar({
         setSelectedDay(day);
         setIsCalendarOpen(false)
     }
-
     function handleSelectedYear(year: number) {
         if (selectedDay) {
             const newDate = set(selectedDay, {year: year})
             setSelectedDay(newDate)
             setCurrentMonth(format(newDate, 'MMM-yyyy'))
         } else {
-            const newDate = new Date(`01-01-${year}`)
+            const newDate = set(firstDayCurrentMonth, {year})
             setCurrentMonth(format(newDate, 'MMM-yyyy'))
         }
         setSelectedYear(year)
@@ -164,9 +167,47 @@ export default function Calendar({
         return years;
       };
 
+    function handleSelectedMonth(month: number) {
+      if (selectedDay) {
+        const newDate = set(selectedDay, {month})
+        setCurrentMonth(format(newDate, 'MMM-yyyy'))
+      } else {
+        const newDate = set(firstDayCurrentMonth, {month})
+        setCurrentMonth(format(newDate, 'MMM-yyyy'))
+      }
+      setIsSelectingMonth(false)
+    }
+
     const years_range = returningYears(getYear(currentYear))
+
+    const [modalTop, setModalTop] = useState(0);
+    const [modalLeft, setModalLeft] = useState(0);
+
+    useEffect(() => {
+      if (!modalRef) return
+      const calculateModalPosition = () => {
+          if (modalRef.current && CalendarInputComponent.current) {
+              const modalRect = modalRef.current.getBoundingClientRect();
+              const calendarContainerRect = CalendarInputComponent.current?.getBoundingClientRect()
+              const top = calendarContainerRect.top + modalRef.current.scrollTop;
+              const left = modalRect.width / 2;
+              setModalTop(top);
+              setModalLeft(left);
+          }
+      };
+      
+      // Recalculate position when modalRef changes or window is resized
+      window.addEventListener('resize', calculateModalPosition);
+      calculateModalPosition();
+
+      return () => {
+          window.removeEventListener('resize', calculateModalPosition);
+      };
+  }, [modalRef, isCalendarOpen, CalendarInputComponent]);
     return (
-        <MainContainer>
+        <MainContainer
+        style={mainContainerStyle}
+        >
             {
                 label &&
                 <label>{label}</label>
@@ -176,6 +217,7 @@ export default function Calendar({
             style={containerStyle}
             >
                 <div
+                ref={CalendarInputComponent}
                 onClick={() => {
                   if (isCalendarOpen) {
                     return setIsCalendarOpen(false);
@@ -200,20 +242,27 @@ export default function Calendar({
                 }
               </div>
               {
-                isCalendarOpen &&
-                <div className="calendar-wrapper" style={datesStyle}>
+                <CalendarWrapper 
+                isCalendarOpen={isCalendarOpen}
+                // style={datesStyle}
+                modalTop={`${modalTop}px`}
+                modalLeft={`${modalLeft}px`}
+                >
                     <Container>
                       <Header>
-                        <button type="button" onClick={previousMonth} className="previous">
-                            <AiOutlineArrowLeft/>
-                        </button>
+                        {
+                          !isSelectingMonth &&
+                          <button type="button" onClick={previousMonth} className="previous">
+                              <AiOutlineArrowLeft/>
+                          </button>
+                        }
                         <div className="date-display"
-                        style={selectYear ? {cursor: 'pointer'}: {}}
                         >
                                 <>
                                 {
                                     isSelectingYear ?
                                     <span
+                                    style={{cursor: 'pointer'}}
                                     onClick={() => setIsSelectingYear(!isSelectingYear)}
                                     >
                                         {years_range[0]}
@@ -221,18 +270,42 @@ export default function Calendar({
                                         {years_range[years_range.length - 1]}
                                     </span>
                                     :
-                                    <span 
-                                    onClick={() => setIsSelectingYear(!isSelectingYear)}>
-                                      {format(firstDayCurrentMonth, 'MMM')}
-                                      <span> </span>
-                                      {format(firstDayCurrentMonth, 'yyyy')}
-                                    </span>
+                                      <>
+                                      {
+                                        isSelectingMonth ?
+                                        <span
+                                        style={{cursor: 'pointer'}}
+                                        onClick={() => setIsSelectingMonth(!isSelectingMonth)}
+                                        >
+                                          {format(firstDayCurrentMonth, 'MMMM')}
+                                        </span>
+                                        :
+                                        <>
+                                        <span
+                                        style={{cursor: 'pointer'}}
+                                        onClick={() => setIsSelectingMonth(!isSelectingMonth)}
+                                        >
+                                        {format(firstDayCurrentMonth, 'MMM')}
+                                        </span>
+                                        <span> </span>
+                                        <span
+                                        style={{cursor: 'pointer'}}
+                                        onClick={() => setIsSelectingYear(!isSelectingYear)}
+                                        >
+                                        {format(firstDayCurrentMonth, 'yyyy')}
+                                        </span>
+                                        </>
+                                      }
+                                      </>
                                 }
                                 </>
                         </div>
-                        <button type="button" onClick={nextMonth} className="next">
-                            <AiOutlineArrowRight/>
-                        </button>
+                        {
+                          !isSelectingMonth &&
+                          <button type="button" onClick={nextMonth} className="next">
+                              <AiOutlineArrowRight/>
+                          </button>
+                        }
                       </Header>
                       <hr />
                       {
@@ -261,6 +334,31 @@ export default function Calendar({
                         </div>
                         :
                         <>
+                          {
+                            isSelectingMonth
+                            ?
+                            <>
+                            <div className="days">
+                              {
+                                getMonthsList().map((month, idx) => {
+                                  return (
+                                    <div
+                                      className={currentMonth.slice(0,3) === month ? 'selected' : ''}
+                                    >
+                                      <button key={idx}
+                                      type="button"
+                                      onClick={() => handleSelectedMonth(idx)}
+                                      >
+                                        <span>{month}</span>
+                                      </button>
+                                    </div>
+                                  )
+                                })
+                              }
+                            </div>
+                            </>
+                            :
+                            <>
                             <div className="daysweek">
                               <div>Mon</div>
                               <div>Tue</div>
@@ -324,10 +422,12 @@ export default function Calendar({
                                   );
                                 })}
                             </div>
+                            </>
+                          }
                       </>
                       }
                     </Container>
-                </div>
+                </CalendarWrapper>
               }
             </Main>
     </MainContainer>
@@ -352,7 +452,6 @@ label {
 
 const Main = styled.div`
     position: relative;
-    z-index: 9;
     height: fit-content;
     .calendar {
         &.selected {
@@ -373,20 +472,6 @@ const Main = styled.div`
       font-size: 24px;
       cursor: pointer;
     }
-  .calendar-wrapper {
-    position: absolute;
-    background-color: ${props => props.theme.white.White};
-    bottom: 0;
-    padding: 0;
-    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
-    right: calc(100% + 5px);
-    overflow: hidden;
-    padding-bottom: 10px;
-    border-radius: 16px;
-    display: flex;
-    align-items: flex-start;
-   
-  }
   div.date {
     padding: 10px 20px;
     height: 100%;
@@ -491,3 +576,22 @@ const Header = styled.div`
       right: 10px;
     }
 `;
+
+const CalendarWrapper = styled.div<{isCalendarOpen: boolean, modalTop: string, modalLeft: string}>`
+display: flex;
+align-items: flex-start;
+${props => props.isCalendarOpen !== true && {
+  display: 'none'
+}}
+position: fixed;
+background-color: ${props => props.theme.white.White};
+padding: 0;
+box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+left: ${props => props.modalLeft};
+top: ${props => props.modalTop};
+z-index: 10;
+transform: translate(-50%, -50%);
+overflow: hidden;
+padding-bottom: 10px;
+border-radius: 16px;
+`

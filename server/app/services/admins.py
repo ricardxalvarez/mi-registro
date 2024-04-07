@@ -11,6 +11,8 @@ async def register(data: AdminBases.Register, db: Session):
         hash = bcrypt.hashpw(data.password.encode('utf-8'), bytes(salt))
         user = Admins(
             name=data.name,
+            center_id=data.center_id,
+            role=data.role,
             username=data.username,
             lastName=data.lastName,
             password=hash,
@@ -27,8 +29,6 @@ async def register(data: AdminBases.Register, db: Session):
             expertise=data.expertise,
             degree=data.degree,
             current_studies=data.current_studies,
-            # labor
-            rank=data.rank
         )
         db.add(user)
         db.commit()
@@ -38,3 +38,5 @@ async def register(data: AdminBases.Register, db: Session):
     except IntegrityError as error:
         print(error)
         raise HTTPException(status_code=422)
+    finally:
+        db.close()

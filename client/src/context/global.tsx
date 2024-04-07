@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
 import * as UserTypes from '../types/user'
 import AdminService from "../services/admin.service";
+import TeacherService from "../services/teacher.service";
 
 const AppProvider = React.createContext(null as any);
 
@@ -18,12 +19,13 @@ export const AppContext = ({children}: {children: React.ReactNode}) => {
     const [signupParentModalOpen, setSignupParentModalOpen] = useState<boolean>(false)
 
 
-    if (user)
-    switch (user.source) {
+    if (user) switch (user.source) {
         case 'administrador':
             AdminService.setToken(user.token)
             break;
-    
+        case 'profesor':
+            TeacherService.setToken(user.token)
+            break;
         default:
             break;
     }

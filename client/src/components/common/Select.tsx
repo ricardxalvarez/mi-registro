@@ -14,6 +14,7 @@ interface SelectInterface {
     value?: string | number
     defaultNull?: boolean,
     required?: boolean
+    defaultValue?: string | number
     style?: CSSProperties
 }
 
@@ -25,23 +26,17 @@ export default function Select({
     value,
     defaultNull,
     required,
+    defaultValue,
     style
 }: SelectInterface) {
     return (
         <Main style={style}>
-            {
-                label &&
-                <label>{label}</label>
-            }
-            <select required={required}  name={name} value={value} onChange={onChange}>
-                {
-                    defaultNull &&
-                    <option disabled selected> -- </option>                }
-                {
-                    options.map((obj, idx) => {
-                        return <option key={idx} value={obj.value}>{obj.name}</option>
-                    })
-                }
+            {label && <label>{label}</label>}
+            <select required={required} name={name} value={value} onChange={onChange}>
+                {(defaultNull || value === '') && <option selected disabled value=""> -- </option>}
+                {options.map((obj, idx) => {
+                    return <option key={idx} selected={defaultValue === obj.value} value={obj.value}>{obj.name}</option>
+                })}
             </select>
         </Main>
     )
