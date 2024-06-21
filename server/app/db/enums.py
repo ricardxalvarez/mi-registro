@@ -24,3 +24,6 @@ KinderGrades = Enum(*kinder_grades, name='kinder_grades_enum')
 
 student_status = ('nuevo inscrito', 'retirado', 'repitiente', 'reingreso', 'aplazado')
 StudentStatus = Enum(*student_status, name='student_status_enum')
+
+attendance = ['presente', 'ausente', 'excusa', 'retraso']
+AttendanceStatus = Enum(*attendance, name='attendance_status_enum')

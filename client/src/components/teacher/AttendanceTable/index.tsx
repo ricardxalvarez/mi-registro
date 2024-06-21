@@ -6,6 +6,7 @@ import * as UtilTypes from '../../../types/utils'
 import TeacherService from "../../../services/teacher.service";
 import * as UtilsTypes from '../../../types/utils'
 import { setDate } from "date-fns";
+import Select from "../../common/Select";
 
 interface AttendanceInterface {
     students: StudentTypes.Student[],
@@ -20,12 +21,13 @@ export default function AttendanceTable({
     day,
     subject_id
 }: AttendanceInterface) {
-    const [attendance, setAttendance] = useState<UtilsTypes.Attendance[]>([])
+    const [attendance, setAttendance] = useState<UtilsTypes.Attendance[] | null>()
 
     useEffect(() => {
         setAttendance([])
         async function getInfo() {
             try {
+                setAttendance(null)
                 const response = (await TeacherService.getAttendance(section_id, day, subject_id)).data
                 setAttendance(response)
             } catch (error) {
@@ -34,14 +36,15 @@ export default function AttendanceTable({
         }
         getInfo()
     }, [day, section_id, subject_id])
-    async function onChangeAttendance(checked: boolean, student_id: string) {
+    async function onChangeAttendance(newAttendance: string, student_id: string) {
         try {
+            if (!attendance) return
             const oldItem = attendance.find(att => att.student_id === student_id)
             
-            const newItem = {section_id, subject_id, day,...oldItem, attendant: checked} as UtilsTypes.Attendance
+            const newItem = {section_id, subject_id, day, student_id,...oldItem, attendance: newAttendance} as UtilsTypes.Attendance
             const filteredList = attendance.filter(att => att.student_id !== student_id)
             setAttendance([...filteredList, {...newItem}])
-            const response = await TeacherService.postAttendance({attendant: checked, student_id, day, section_id, subject_id} as UtilTypes.Attendance)
+            const response = await TeacherService.postAttendance({attendance: newAttendance, student_id, day, section_id, subject_id} as UtilTypes.Attendance)
             console.log(response)
         } catch (error) {
             console.log(error)
@@ -57,29 +60,46 @@ export default function AttendanceTable({
                             style={{width: '40px'}}
                             ></th>
                             <th>Nombre</th>
-                            <th>Usuario</th>
-                            <th>Email</th>
                             <th
-                            style={{width: '100px'}}
+                            style={{width: '170px'}}
                             >Presente</th>
                         </tr>
                     </thead>
                     <tbody>
                         {
                             students.map((student, idx) => {
-                                console.log(attendance)
-                                const attendant = attendance.find(att => att.student_id === student.id)
+                                const attendant = attendance ? attendance.find(att => att.student_id === student.id) : null
                                 return (
                                     <tr>
                                         <td>{idx + 1}</td>
                                         <td>{student.lastName} {student.name}</td>
-                                        <td>{student.username}</td>
-                                        <td>{student.email}</td>
                                         <td>
-                                            <Checkbox
-                                            checked={attendant?.attendant}
-                                            onChange={(newValue: boolean) => onChangeAttendance(newValue, student.id)}
+                                            <Select
+                                            value={attendant?.attendance || ''}
+                                            options={[
+                                                {
+                                                    value: 'presente',
+                                                    name: 'presente'
+                                                },
+                                                {
+                                                    value: 'ausente',
+                                                    name: 'ausente'
+                                                },
+                                                {
+                                                    value: 'excusa',
+                                                    name: 'excusa'
+                                                },
+                                                {
+                                                    value: 'retraso',
+                                                    name: 'retraso'
+                                                }
+                                            ]}
+                                            onChange={e => onChangeAttendance(e.target.value, student.id)}
+                                            defaultNull
                                             />
+                                            {/* <Checkbox
+                                            checked={ attendant?.attendant || false}
+                                            /> */}
                                         </td>
                                     </tr>
                                 )

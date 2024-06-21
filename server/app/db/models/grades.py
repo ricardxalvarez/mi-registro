@@ -182,7 +182,7 @@ class GradePs(Base):
 class Attendance(Base):
     __tablename__ = 'attendance'
 
-    attendant = Column(Boolean, server_default='t', nullable=False)
+    attendance = Column(Enums.AttendanceStatus)
     day = Column(Date, nullable=False)
 
     section_id = Column(UUID(as_uuid=True), ForeignKey('section.id'), nullable=False)
@@ -197,5 +197,5 @@ class Attendance(Base):
     subject_id = Column(UUID(as_uuid=True), ForeignKey('subject.id'))
 
     __table_args__ = (
-        UniqueConstraint(attendant, day, student_id, name='check_unique_attendance'),
+        UniqueConstraint(attendance, day, student_id, name='check_unique_attendance'),
     )

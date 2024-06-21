@@ -13,7 +13,7 @@ export interface SectionFilter {
 }
 
 export interface Attendance {
-    attendant: boolean
+    attendance: string
     day: Date
 
     section_id: string

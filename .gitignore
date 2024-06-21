@@ -3,6 +3,7 @@
 # dependencies
 env
 .env
+start.sh
 
 node_modules
 .pnp

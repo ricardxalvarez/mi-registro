@@ -55,3 +55,11 @@ class Training(BaseModel):
     expertise: str
     degree: str
     current_studies: str
+    age: float
+    nationality: str
+    civil_status: str
+    address: str
+    gender: str
+    name: str
+    lastName: str
+    identification: str

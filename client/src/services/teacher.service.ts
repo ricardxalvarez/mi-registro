@@ -53,7 +53,7 @@ class TeacherServiceClass {
     }
 
     postAttendance(data: UtilsTypes.Attendance) {
-        return http.post(this.attendance, data, this.config)
+        return http.post(this.attendance + '/change', data, this.config)
     }
 
     listSubjectsByTeacher(section_id: string) {

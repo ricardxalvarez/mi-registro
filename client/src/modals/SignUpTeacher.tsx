@@ -8,7 +8,6 @@ import Select from "../components/common/Select";
 import genders from '../json/genders.json'
 import careers from '../json/careers.json'
 import current_studies from '../json/current_studies.json'
-import ranks from '../json/ranks.json'
 import createAgeArray from "../utils/optionsArray";
 import civil_status from '../json/civil_status.json'
 import CountryInput from "../components/common/Country";

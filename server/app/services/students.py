@@ -10,6 +10,7 @@ from datetime import datetime
 import secrets
 import string
 from app.config import settings
+from ..utils.hash import hash
 
 def generate_random_string(length):
     characters = string.ascii_letters + string.digits
@@ -41,13 +42,11 @@ async def register(data: StudentBases.Register, center_id: str, db: Session):
             if not check_keys(required_keys, data.dict()):
                 raise HTTPException(status_code=422)
 
-        salt = bcrypt.gensalt()
-        hash = bcrypt.hashpw(data.password.encode('utf-8'), bytes(salt))
         user = Students(
             center_id=center_id,
             name=data.name,
             lastName=data.lastName,
-            password=hash,
+            password=hash(data.password),
             username=data.username,
             identification=data.identification,
             RNE=data.RNE,

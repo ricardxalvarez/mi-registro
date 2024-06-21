@@ -3,6 +3,7 @@ from pydantic import BaseModel, validator, EmailStr, Field, constr
 from datetime import datetime
 from .health import Health
 from .documents import Document
+from typing import Optional
 
 class Students(BaseModel):
     id: str
@@ -68,7 +69,7 @@ class Register(BaseModel):
     username: str = Field(min_length=4, pattern=r"^[a-zA-Z0-9_.-]+$")
     identification: str
     RNE: str
-    pic: str | None = None
+    pic: Optional[str] = None
     address: str
     nationality: str
     civil_status: str
@@ -78,26 +79,26 @@ class Register(BaseModel):
     documents: Document
     birth_place: str
         # lives_with is "otro"
-    lives_with_name: str | None = None
-    lives_with_lastName: str | None = None
-    lives_with_relationship: str | None = None
-    lives_with_address: str | None = None
-    lives_with_phone: str | None = None
-    lives_with_email: str | None = None
-    lives_with_job: str | None = None
-    lives_with_job_address: str | None = None
-    lives_with: str | None
+    lives_with_name: Optional[str] = None
+    lives_with_lastName: Optional[str] = None
+    lives_with_relationship: Optional[str] = None
+    lives_with_address: Optional[str] = None
+    lives_with_phone: Optional[str] = None
+    lives_with_email: Optional[str] = None
+    lives_with_job: Optional[str] = None
+    lives_with_job_address: Optional[str] = None
+    lives_with: Optional[str]
     health: Health 
     # if level is "inicial"
-    siblings_quantity: int | None = None 
+    siblings_quantity: Optional[int] = None 
         # array of numbers, length must be equal to brothers_quantity
-    siblings_ages: list[int] | None = None
-    sibling_place: int | None = None
+    siblings_ages: Optional[list[int]] = None
+    sibling_place: Optional[int] = None
     # if student level is 'primario' or 'secundario'
-    student_status: str | None = None
-    enrolled_at: str | None = None
-    removed_at: str | None = None
-    promoted: bool | None = False
+    student_status: Optional[str] = None
+    enrolled_at: Optional[str] = None
+    removed_at: Optional[str] = None
+    promoted: Optional[bool] = False
 
     # @validator('password')
     # def password_complexity(cls, value: str):

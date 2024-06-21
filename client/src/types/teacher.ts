@@ -26,4 +26,12 @@ export interface Training {
     expertise: string
     degree: string
     current_studies: string
+    age: Number
+    nationality: string
+    civil_status: string
+    address: string
+    gender: string
+    name: string
+    identification: string
+    lastName: string
 }

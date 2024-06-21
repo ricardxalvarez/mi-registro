@@ -53,7 +53,7 @@ async def postAttendance(data: AttendanceBase.newAttendance, db: Session):
 
         if not attendance:
             newAttendance = Attendance(
-                attendant=data.attendant,
+                attendance=data.attendance,
                 day=data.day,
                 section_id=data.section_id,
                 grade_id=section.grade_id,
@@ -74,7 +74,7 @@ async def postAttendance(data: AttendanceBase.newAttendance, db: Session):
                 where(Attendance.id == attendance.id).
                 # where(Attendance.day == data.day).
                 # where(Attendance.subject_id == data.subject_id).
-                values(attendant=data.attendant)
+                values(attendance=data.attendance)
             )
             db.commit()
             return 'Attendance updated successfully'

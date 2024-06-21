@@ -8,7 +8,7 @@ router = APIRouter(
     prefix='/section'
 )
 
-@router.get('/list/teacher/')
+@router.get('/list/teacher')
 @auth(['profesor'])
 async def listSectionsByTeacher(request: Request, db: Session = Depends(get_database)):
     user = request.state.user
@@ -21,7 +21,7 @@ async def listStudentsBySection(request: Request, section_id: str, db: Session =
     result = await SectionService.listStudentsBySection(section_id, db)
     return result
 
-@router.get('/list/subject/{section_id}/teacher/')
+@router.get('/list/subject/{section_id}/teacher')
 @auth(['profesor'])
 async def listSubjectsByTeacher(request: Request, section_id: str, db: Session = Depends(get_database)):
     user = request.state.user

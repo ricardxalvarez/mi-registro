@@ -3,19 +3,18 @@ from sqlalchemy.orm import Session
 from sqlalchemy.exc import IntegrityError
 from app.db.models import Admins
 from fastapi import HTTPException
-import bcrypt
+from ..utils.hash import hash
 
 async def register(data: AdminBases.Register, db: Session):
     try:
-        salt = bcrypt.gensalt()
-        hash = bcrypt.hashpw(data.password.encode('utf-8'), bytes(salt))
+        
         user = Admins(
             name=data.name,
             center_id=data.center_id,
             role=data.role,
             username=data.username,
             lastName=data.lastName,
-            password=hash,
+            password=hash(data.password),
             identification=data.identification,
             pic=data.pic,
             gender=data.gender,

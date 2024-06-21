@@ -4,18 +4,17 @@ from sqlalchemy.orm import Session
 from sqlalchemy.exc import IntegrityError
 from app.db.models import *
 from fastapi import HTTPException
-import bcrypt
+from ..utils.hash import hash
 
 async def register(data: TeacherBases.Register, center_id: str, db: Session):
     try:
-        salt = bcrypt.gensalt()
-        hash = bcrypt.hashpw(data.password.encode('utf-8'), bytes(salt))
+        
         user = Teachers(
             name=data.name,
             center_id=center_id,
             username=data.username,
             lastName=data.lastName,
-            password=hash,
+            password=hash(data.password),
             identification=data.identification,
             pic=data.pic,
             gender=data.gender,
@@ -61,6 +60,14 @@ async def updateTeacher(id: str, data: TeacherBases.Training, db: Session):
                 expertise=data.expertise,
                 degree=data.degree,
                 current_studies=data.current_studies,
+                age=data.age,
+                nationality=data.nationality,
+                civil_status=data.civil_status,
+                address=data.address,
+                gender=data.gender,
+                name=data.name,
+                lastName=data.lastName,
+                identification=data.identification,
             )
         )
         db.commit()

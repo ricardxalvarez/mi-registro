@@ -5,7 +5,7 @@ class newAttendance(BaseModel):
     section_id: str
     day: datetime
     student_id: str
-    attendant: bool
+    attendance: str
     subject_id: str = None
 
 class getAttendance(BaseModel):

@@ -4,7 +4,7 @@ from sqlalchemy.exc import IntegrityError
 from app.db.models import Parents, Students, ParentChildrenRelation
 from fastapi import HTTPException
 from app.utils.has_no_duplicates import has_no_duplicates
-import bcrypt
+from ..utils.hash import hash
 
 async def register(data: ParentBases.Register, db: Session):
     try:
@@ -14,13 +14,12 @@ async def register(data: ParentBases.Register, db: Session):
             student = db.query(Students.id).filter(Students.username == child_username).first()
             if not student:
                 raise HTTPException(status_code=422, detail=f"No student with username {child_username}")
-        salt = bcrypt.gensalt()
-        hash = bcrypt.hashpw(data.password.encode('utf-8'), bytes(salt))
+        
         user = Parents(
             name=data.name,
             username=data.username,
             lastName=data.lastName,
-            password=hash,
+            password=hash(data.password),
             id_card=data.id_card,
             passport=data.passport,
             relationship=data.relationship,
